@@ -1,0 +1,30 @@
+// Implement a program that calculates the minimum number of coins required to give a user change.
+#include <cs50.h>
+#include <math.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Initialize the cents owed
+    int cents_owed;
+
+    // Loop for rounding money owed
+    do
+    {
+        // Prompt & connversion from decimal to number
+        float money = get_float("Change owed: ");
+        cents_owed = round(money * 100);
+    }
+    while (cents_owed <= 0);
+
+    // Initializing cents
+    int quarters = cents_owed / 25;
+    int dimes = (cents_owed % 25) / 10;
+    int nickles = ((cents_owed % 25) % 10) / 5;
+    int pennies = ((cents_owed % 25) % 10) % 5;
+
+    // Output the result
+    printf("%i\n", quarters + dimes + nickles + pennies);
+
+
+}
